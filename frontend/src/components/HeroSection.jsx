@@ -77,25 +77,25 @@ const HeroSection = () => {
       </div>
 
       {/* Simple Dark Overlay */}
-      <div className="absolute inset-0 bg-[#182527]/75"></div>
+      <div className="absolute inset-0 bg-primary/80"></div>
 
       {/* Hero Content - Bold Typography */}
       <div className="relative z-10 max-w-6xl px-6 lg:px-8">
         <div className="max-w-4xl">
           {/* Small Tagline - Dynamic */}
-          <p className="mb-6 text-sm font-medium uppercase tracking-[0.3em] text-[#D1B68A]">
+          <p className="mb-6 text-sm font-medium uppercase tracking-[0.3em] text-secondary">
             {settings?.heroTagline}
           </p>
 
           {/* Main Heading - Dynamic */}
-          <h1 className="mb-8 text-5xl font-bold leading-[1.1] text-white md:text-6xl lg:text-7xl xl:text-8xl">
+          <h1 className="mb-8 text-5xl font-serif font-bold leading-[1.1] text-white md:text-6xl lg:text-7xl xl:text-8xl shadow-sm">
             {firstPart}
             <br />
-            <span className="text-[#D1B68A]">{lastPart}</span>
+            <span className="text-secondary">{lastPart}</span>
           </h1>
 
           {/* Subheading - Dynamic */}
-          <p className="mb-12 max-w-xl text-lg leading-relaxed text-gray-300 md:text-xl">
+          <p className="mb-12 max-w-xl text-lg leading-relaxed text-gray-200 md:text-xl font-light">
             {settings?.heroSubheading}
           </p>
 
@@ -104,7 +104,7 @@ const HeroSection = () => {
             <a
               href="#inquiry-form"
               onClick={scrollToInquiry}
-              className="inline-flex items-center justify-center gap-3 bg-[#D1B68A] px-8 py-4 text-base font-semibold text-[#182527] transition-colors duration-200 hover:bg-[#e0cba8]"
+              className="btn btn-primary px-8 py-4 text-base h-auto"
             >
               {settings?.heroCta1Text}
               <ArrowRight className="h-5 w-5" />
@@ -112,7 +112,7 @@ const HeroSection = () => {
 
             <Link
               to="/projects"
-              className="inline-flex items-center justify-center gap-3 border-2 border-white/30 px-8 py-4 text-base font-semibold text-white transition-colors duration-200 hover:border-white hover:bg-white/10"
+              className="btn btn-outline border-white/30 text-white hover:bg-white/10 hover:border-white px-8 py-4 text-base h-auto"
             >
               {settings?.heroCta2Text}
               <ArrowRight className="h-5 w-5" />
@@ -124,8 +124,8 @@ const HeroSection = () => {
             <div className="mt-16 flex flex-wrap gap-12 border-t border-white/20 pt-8">
               {settings.heroStats.map((stat, index) => (
                 <div key={index}>
-                  <p className="text-3xl font-bold text-white">{stat.value}</p>
-                  <p className="mt-1 text-sm text-gray-400">{stat.label}</p>
+                  <p className="text-3xl font-bold text-white font-serif">{stat.value}</p>
+                  <p className="mt-1 text-sm text-gray-400 uppercase tracking-wider">{stat.label}</p>
                 </div>
               ))}
             </div>

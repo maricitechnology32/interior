@@ -43,39 +43,39 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F4F0] flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-surface-secondary flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-gray-600 hover:text-[#182527] transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-text-secondary hover:text-primary transition-colors mb-8 group"
         >
-          <ArrowLeft className="h-4 w-4" />
+          <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
           Back to Home
         </Link>
 
-        <div className="bg-white p-8 shadow-lg">
-          <h1 className="mb-2 text-center text-3xl font-bold text-[#182527]">
+        <div className="bg-white p-8 shadow-card rounded-card border border-gray-100">
+          <h1 className="mb-2 text-center text-3xl font-serif font-bold text-primary">
             Create Account
           </h1>
-          <p className="mb-6 text-center text-gray-600">
+          <p className="mb-6 text-center text-text-secondary text-sm">
             Join us and start your design journey
           </p>
 
           {error && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 text-center">
+            <div className="mb-6 p-4 bg-red-50 border border-red-100 rounded text-status-error text-center text-sm font-medium">
               {error}
             </div>
           )}
 
           <form onSubmit={submitHandler}>
             <div className="mb-4">
-              <label htmlFor="name" className="mb-2 block font-medium text-gray-700">
+              <label htmlFor="name" className="label">
                 Full Name
               </label>
               <input
                 type="text"
                 id="name"
-                className="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-[#D1B68A]"
+                className="input"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
@@ -83,13 +83,13 @@ const RegisterPage = () => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="email" className="mb-2 block font-medium text-gray-700">
+              <label htmlFor="email" className="label">
                 Email Address
               </label>
               <input
                 type="email"
                 id="email"
-                className="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-[#D1B68A]"
+                className="input"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -97,29 +97,29 @@ const RegisterPage = () => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="password" className="mb-2 block font-medium text-gray-700">
+              <label htmlFor="password" className="label">
                 Password
               </label>
               <input
                 type="password"
                 id="password"
-                className="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-[#D1B68A]"
+                className="input"
                 placeholder="At least 8 characters"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <p className="mt-1 text-sm text-gray-500">Minimum 8 characters</p>
+              <p className="mt-1 text-xs text-text-muted">Minimum 8 characters</p>
             </div>
 
             <div className="mb-6">
-              <label htmlFor="confirmPassword" className="mb-2 block font-medium text-gray-700">
+              <label htmlFor="confirmPassword" className="label">
                 Confirm Password
               </label>
               <input
                 type="password"
                 id="confirmPassword"
-                className="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-[#D1B68A]"
+                className="input"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
@@ -129,7 +129,7 @@ const RegisterPage = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#D1B68A] py-4 font-semibold text-[#182527] hover:bg-[#c4a87d] transition-colors disabled:opacity-50"
+              className="w-full btn btn-primary"
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
@@ -142,9 +142,9 @@ const RegisterPage = () => {
             </button>
           </form>
 
-          <div className="mt-6 text-center text-gray-600">
+          <div className="mt-6 text-center text-text-secondary text-sm">
             Already have an account?{' '}
-            <Link to="/login" className="font-medium text-[#182527] hover:underline">
+            <Link to="/login" className="font-bold text-primary hover:text-secondary hover:underline transition-colors">
               Sign In
             </Link>
           </div>

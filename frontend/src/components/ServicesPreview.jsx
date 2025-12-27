@@ -56,17 +56,17 @@ const ServicesPreview = () => {
   }, []);
 
   return (
-    <section className="py-20 px-6 bg-[#F5F4F0]">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-20 px-6 bg-surface-secondary">
+      <div className="container-custom">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#D1B68A] mb-4">
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-secondary mb-4">
             Our Services
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#182527] mb-4">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">
             Innovative Design for Every Need
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-text-secondary max-w-2xl mx-auto font-light">
             From residential homes to commercial spaces, we craft environments that inspire,
             function beautifully, and reflect your unique vision.
           </p>
@@ -77,8 +77,8 @@ const ServicesPreview = () => {
           {loading ? (
             // Loading skeleton
             [1, 2, 3].map((i) => (
-              <div key={i} className="bg-white p-8 animate-pulse">
-                <div className="w-14 h-14 bg-gray-200 mb-6"></div>
+              <div key={i} className="bg-white p-8 rounded-card shadow-sm animate-pulse">
+                <div className="w-14 h-14 bg-gray-200 mb-6 rounded-full"></div>
                 <div className="h-6 bg-gray-200 rounded w-2/3 mb-3"></div>
                 <div className="h-4 bg-gray-200 rounded w-full mb-2"></div>
                 <div className="h-4 bg-gray-200 rounded w-3/4 mb-6"></div>
@@ -89,26 +89,26 @@ const ServicesPreview = () => {
             services.map((service) => {
               const IconComponent = iconMap[service.icon] || Home;
               return (
-                <div key={service._id} className="bg-white p-8">
+                <div key={service._id} className="card p-8 bg-white group hover:shadow-card-hover transition-all duration-300">
                   {/* Icon */}
-                  <div className="mb-6 inline-flex items-center justify-center w-14 h-14 bg-[#D1B68A]/20">
-                    <IconComponent className="h-7 w-7 text-[#D1B68A]" />
+                  <div className="mb-6 inline-flex items-center justify-center w-14 h-14 rounded-full bg-secondary/10 group-hover:bg-secondary group-hover:text-primary transition-colors duration-300">
+                    <IconComponent className="h-7 w-7 text-secondary group-hover:text-primary transition-colors duration-300" />
                   </div>
 
-                  <h3 className="text-2xl font-bold text-[#182527] mb-3">
+                  <h3 className="text-2xl font-serif font-bold text-primary mb-3">
                     {service.title}
                   </h3>
 
-                  <p className="text-gray-600 mb-6 leading-relaxed">
+                  <p className="text-text-secondary mb-6 leading-relaxed">
                     {service.description}
                   </p>
 
                   <Link
                     to={service.link || '/projects'}
-                    className="inline-flex items-center gap-2 font-medium text-[#D1B68A] hover:text-[#b58e5a] transition-colors"
+                    className="inline-flex items-center gap-2 font-medium text-secondary hover:text-primary transition-colors group/link"
                   >
                     Learn More
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-4 w-4 group-hover/link:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               );
@@ -120,7 +120,7 @@ const ServicesPreview = () => {
         <div className="mt-16 text-center">
           <Link
             to="/services"
-            className="inline-flex items-center gap-2 bg-[#D1B68A] px-8 py-4 font-semibold text-[#182527] hover:bg-[#c4a87d] transition-colors"
+            className="btn btn-primary"
           >
             View All Services
             <ArrowRight className="h-5 w-5" />

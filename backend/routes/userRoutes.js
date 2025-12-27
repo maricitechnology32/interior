@@ -5,6 +5,8 @@ import {
   registerUser,
   getUserProfile,
   updateUserProfile,
+  forgotPassword,
+  resetPassword,
 } from '../controllers/userController.js';
 import { protect, admin } from '../middleware/authMiddleware.js';
 import { authLimiter } from '../middleware/rateLimiter.js';
@@ -35,6 +37,12 @@ router.post(
   handleValidationErrors, // 3. Handle any validation errors
   loginUser // 4. (If all pass) Run controller logic
 );
+
+// @route   POST /api/users/forgot-password
+router.post('/forgot-password', authLimiter, forgotPassword);
+
+// @route   PUT /api/users/reset-password/:resetToken
+router.put('/reset-password/:resetToken', authLimiter, resetPassword);
 
 // --- Private Routes ---
 // @route   GET /api/users/profile

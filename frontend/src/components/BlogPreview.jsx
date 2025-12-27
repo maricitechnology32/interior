@@ -39,10 +39,10 @@ const BlogPreview = () => {
 
   if (loading) {
     return (
-      <div className="bg-[#F5F4F0] py-16">
-        <div className="flex flex-col items-center justify-center py-12">
-          <Loader2 className="h-12 w-12 animate-spin text-[#D1B68A]" />
-          <p className="mt-4 text-lg font-medium text-gray-700">Loading blog posts...</p>
+      <div className="bg-surface-secondary py-20">
+        <div className="flex flex-col items-center justify-center">
+          <Loader2 className="h-12 w-12 animate-spin text-secondary" />
+          <p className="mt-4 text-lg font-medium text-text-muted">Loading blog posts...</p>
         </div>
       </div>
     );
@@ -51,17 +51,17 @@ const BlogPreview = () => {
   if (blogs.length === 0) return null;
 
   return (
-    <section className="py-20 px-6 bg-[#F5F4F0]">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-20 px-6 bg-surface-secondary">
+      <div className="container-custom">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#D1B68A] mb-4">
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-secondary mb-4">
             From Our Blog
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#182527] mb-4">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">
             Latest Design Insights
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-text-secondary max-w-2xl mx-auto font-light leading-relaxed">
             Stay updated with the latest interior design trends, tips, and inspiration from our experts.
           </p>
         </div>
@@ -69,23 +69,25 @@ const BlogPreview = () => {
         {/* Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {blogs.map((blog) => (
-            <article key={blog._id} className="group bg-white overflow-hidden">
+            <article key={blog._id} className="group bg-white rounded-card overflow-hidden shadow-sm hover:shadow-card-hover transition-all duration-300">
               {/* Image */}
               {blog.image && (
-                <div className="aspect-video overflow-hidden">
+                <div className="aspect-video overflow-hidden relative">
                   <img
                     src={blog.image.url}
                     alt={blog.title}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
+                  {/* Overlay on hover */}
+                  <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
               )}
 
               {/* Content */}
               <div className="p-6">
                 {/* Date */}
-                <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                  <Calendar className="h-4 w-4" />
+                <div className="flex items-center gap-2 text-xs font-bold text-text-muted uppercase tracking-wider mb-3">
+                  <Calendar className="h-3 w-3" />
                   <span>
                     {new Date(blog.createdAt || Date.now()).toLocaleDateString('en-US', {
                       month: 'short',
@@ -96,22 +98,22 @@ const BlogPreview = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-[#182527] mb-3 line-clamp-2">
+                <h3 className="text-xl font-serif font-bold text-primary mb-3 line-clamp-2 group-hover:text-secondary transition-colors">
                   {blog.title}
                 </h3>
 
                 {/* Excerpt */}
-                <p className="text-gray-600 mb-4 line-clamp-3">
+                <p className="text-text-secondary mb-4 line-clamp-3 text-sm leading-relaxed">
                   {getExcerpt(blog)}
                 </p>
 
                 {/* Link */}
                 <Link
                   to={`/blog/${blog._id}`}
-                  className="inline-flex items-center gap-2 font-medium text-[#D1B68A] hover:text-[#b58e5a] transition-colors"
+                  className="inline-flex items-center gap-2 font-medium text-secondary hover:text-primary transition-colors group/link"
                 >
                   Read More
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4 group-hover/link:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </article>
@@ -122,7 +124,7 @@ const BlogPreview = () => {
         <div className="mt-16 text-center">
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 bg-[#D1B68A] px-8 py-4 font-semibold text-[#182527] hover:bg-[#c4a87d] transition-colors"
+            className="btn btn-primary"
           >
             View All Articles
             <ArrowRight className="h-5 w-5" />

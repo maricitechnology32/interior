@@ -30,17 +30,17 @@ const steps = [
 
 const WorkingProcess = () => {
   return (
-    <section className="py-20 px-6 bg-[#F5F4F0]">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-20 px-6 bg-surface-secondary">
+      <div className="container-custom">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#D1B68A] mb-4">
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-secondary mb-4">
             Our Process
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#182527] mb-4">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">
             From Concept to Completion
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-text-secondary max-w-2xl mx-auto font-light leading-relaxed">
             Our proven 4-step process ensures a seamless journey from initial consultation to your dream space.
           </p>
         </div>
@@ -48,20 +48,20 @@ const WorkingProcess = () => {
         {/* Steps Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {steps.map((step, index) => (
-            <div key={index} className="text-center">
+            <div key={index} className="text-center group">
               {/* Icon */}
-              <div className="relative inline-flex items-center justify-center w-20 h-20 bg-white mb-6">
-                <step.icon className="h-10 w-10 text-[#182527]" />
+              <div className="relative inline-flex items-center justify-center w-20 h-20 bg-white mb-6 rounded-2xl shadow-sm group-hover:-translate-y-2 transition-transform duration-300">
+                <step.icon className="h-9 w-9 text-primary" />
                 {/* Number Badge */}
-                <span className="absolute -top-2 -right-2 w-8 h-8 bg-[#D1B68A] text-[#182527] text-xs font-bold flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 w-8 h-8 bg-secondary text-primary text-xs font-bold flex items-center justify-center rounded-full shadow-md">
                   {step.number}
                 </span>
               </div>
 
-              <h3 className="text-xl font-bold text-[#182527] mb-3">
+              <h3 className="text-xl font-serif font-bold text-primary mb-3">
                 {step.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-text-secondary leading-relaxed text-sm">
                 {step.description}
               </p>
             </div>
@@ -70,16 +70,16 @@ const WorkingProcess = () => {
 
         {/* CTA */}
         <div className="mt-20 text-center">
-          <div className="inline-block bg-white p-8 md:p-12">
-            <h3 className="text-2xl font-bold text-[#182527] mb-2">
+          <div className="inline-block bg-white p-8 md:p-12 rounded-card shadow-card border border-gray-100">
+            <h3 className="text-2xl font-serif font-bold text-primary mb-2">
               Ready to Get Started?
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-text-secondary mb-8">
               Let's transform your space together with our expert process.
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 bg-[#D1B68A] px-8 py-4 font-semibold text-[#182527] hover:bg-[#c4a87d] transition-colors"
+              className="btn btn-primary"
             >
               Start Your Project
               <ArrowRight className="h-5 w-5" />

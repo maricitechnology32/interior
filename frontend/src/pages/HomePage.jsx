@@ -1,37 +1,4 @@
-// import React from 'react';
-// import InquiryForm from '../components/InquiryForm';
-// import TestimonialSlider from '../components/TestimonialSlider';
-// import WorkingProcess from '../components/WorkingProcess'; // <-- 1. IMPORT
 
-// const HomePage = () => {
-//   return (
-//     <div>
-//       {/* Hero Section (No Change) */}
-//       <div className="text-center p-10">
-//         <h1 className="text-4xl font-bold text-gray-900">
-//           Welcome to The Space Stylers
-//         </h1>
-//         <p className="text-lg text-gray-700 mt-4">
-//           We specialize in creating personalized, functional, and stylish
-//           interiors that reflect your unique vision.
-//         </p>
-//       </div>
-
-//       {/* Testimonials Section (No Change) */}
-//       <TestimonialSlider />
-
-//       {/* Working Process Section (NEW) */}
-//       <WorkingProcess /> {/* <-- 2. ADD COMPONENT */}
-
-//       {/* Inquiry Form Section */}
-//       <div className="mt-12 p-4">
-//         <InquiryForm />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default HomePage;
 
 import React, { useEffect, useState } from 'react';
 

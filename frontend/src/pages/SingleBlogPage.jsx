@@ -57,10 +57,10 @@ const SingleBlogPage = () => {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#F5F4F0]">
+      <div className="flex min-h-screen items-center justify-center bg-surface-secondary">
         <div className="text-center">
-          <Loader2 className="mx-auto h-12 w-12 animate-spin text-[#D1B68A]" />
-          <p className="mt-4 text-lg font-medium text-gray-700">Loading article...</p>
+          <Loader2 className="mx-auto h-12 w-12 animate-spin text-secondary" />
+          <p className="mt-4 text-lg font-medium text-text-muted">Loading article...</p>
         </div>
       </div>
     );
@@ -68,12 +68,12 @@ const SingleBlogPage = () => {
 
   if (error) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#F5F4F0] p-4">
+      <div className="flex min-h-screen items-center justify-center bg-surface-secondary p-4">
         <div className="max-w-md w-full text-center">
-          <div className="bg-white p-8 shadow-lg">
-            <h2 className="mb-2 text-2xl font-bold text-gray-900">Article Not Found</h2>
-            <p className="mb-6 text-gray-600">{error}</p>
-            <Link to="/blog" className="inline-flex items-center gap-2 bg-[#D1B68A] px-6 py-3 font-medium text-[#182527]">
+          <div className="bg-white p-8 shadow-lg rounded-card">
+            <h2 className="mb-2 text-2xl font-serif font-bold text-primary">Article Not Found</h2>
+            <p className="mb-6 text-text-secondary">{error}</p>
+            <Link to="/blog" className="btn btn-primary">
               <ArrowLeft className="h-5 w-5" /> Back to all posts
             </Link>
           </div>
@@ -88,19 +88,19 @@ const SingleBlogPage = () => {
   const hasSections = blog.sections && blog.sections.length > 0;
 
   return (
-    <div className="min-h-screen bg-[#F5F4F0]">
+    <div className="min-h-screen bg-surface-secondary">
       {/* Hero Image */}
       {blog.image?.url && (
         <div className="relative h-[50vh] min-h-[400px]">
           <img src={blog.image.url} alt={blog.title} className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-[#182527]/60"></div>
+          <div className="absolute inset-0 bg-primary/60"></div>
           <div className="absolute inset-0 flex items-end">
-            <div className="max-w-4xl mx-auto px-6 pb-12 w-full">
-              <Link to="/blog" className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors mb-6">
-                <ArrowLeft className="h-4 w-4" /> Back to all posts
+            <div className="container-custom pb-12 w-full">
+              <Link to="/blog" className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors mb-6 group">
+                <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" /> Back to all posts
               </Link>
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{blog.title}</h1>
-              <div className="flex flex-wrap items-center gap-4 text-sm text-gray-300">
+              <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4 shadow-sm">{blog.title}</h1>
+              <div className="flex flex-wrap items-center gap-4 text-sm text-gray-300 font-medium">
                 <div className="flex items-center gap-2">
                   <Calendar className="h-4 w-4" />
                   <span>{new Date(blog.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
@@ -117,13 +117,13 @@ const SingleBlogPage = () => {
 
       {/* No Image Header */}
       {!blog.image?.url && (
-        <div className="bg-[#182527] py-16 px-6">
-          <div className="max-w-4xl mx-auto">
-            <Link to="/blog" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8">
-              <ArrowLeft className="h-4 w-4" /> Back to all posts
+        <div className="bg-primary py-20 px-6">
+          <div className="container-custom">
+            <Link to="/blog" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8 group">
+              <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" /> Back to all posts
             </Link>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{blog.title}</h1>
-            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
+            <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">{blog.title}</h1>
+            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400 font-medium">
               <div className="flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
                 <span>{new Date(blog.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
@@ -138,11 +138,11 @@ const SingleBlogPage = () => {
       )}
 
       {/* Content */}
-      <article className="max-w-4xl mx-auto px-6 py-16">
-        <div className="bg-white p-8 md:p-12">
+      <article className="container-custom py-16">
+        <div className="bg-white p-8 md:p-12 rounded-card shadow-sm border border-gray-100">
           {/* Share Button */}
           <div className="flex justify-end mb-8">
-            <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2 border border-gray-200 text-gray-600 hover:bg-gray-50">
+            <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2 border border-gray-200 text-text-secondary hover:bg-surface-secondary hover:border-secondary transition-colors rounded-full text-sm font-medium">
               <Share2 className="h-4 w-4" />
               <span>Share</span>
             </button>
@@ -154,10 +154,10 @@ const SingleBlogPage = () => {
               {blog.sections.map((section, index) => (
                 <div key={index}>
                   {section.type === 'text' && section.content && (
-                    <div className="prose prose-lg max-w-none">
+                    <div className="prose prose-lg max-w-none text-text-secondary">
                       {section.content.split('\n').map((paragraph, pIndex) => (
                         paragraph.trim() && (
-                          <p key={pIndex} className="mb-4 leading-relaxed text-gray-700">
+                          <p key={pIndex} className="mb-4 leading-relaxed font-light text-lg">
                             {paragraph}
                           </p>
                         )
@@ -165,14 +165,14 @@ const SingleBlogPage = () => {
                     </div>
                   )}
                   {section.type === 'image' && section.image?.url && (
-                    <figure>
+                    <figure className="my-8">
                       <img
                         src={section.image.url}
                         alt={section.caption || 'Blog image'}
-                        className="w-full rounded"
+                        className="w-full rounded-card shadow-md"
                       />
                       {section.caption && (
-                        <figcaption className="mt-2 text-center text-sm text-gray-500 italic">
+                        <figcaption className="mt-3 text-center text-sm text-text-muted italic">
                           {section.caption}
                         </figcaption>
                       )}
@@ -183,10 +183,10 @@ const SingleBlogPage = () => {
             </div>
           ) : (
             // Legacy content fallback
-            <div className="prose prose-lg max-w-none">
+            <div className="prose prose-lg max-w-none text-text-secondary">
               {blog.content?.split('\n').map((paragraph, index) => (
                 paragraph.trim() && (
-                  <p key={index} className="mb-6 leading-relaxed text-gray-700">
+                  <p key={index} className="mb-6 leading-relaxed font-light text-lg">
                     {paragraph}
                   </p>
                 )
@@ -196,8 +196,8 @@ const SingleBlogPage = () => {
 
           {/* Footer CTA */}
           <div className="mt-12 pt-8 border-t border-gray-200 text-center">
-            <p className="mb-4 text-lg font-semibold text-gray-900">Enjoyed this article?</p>
-            <Link to="/blog" className="inline-flex items-center gap-2 bg-[#D1B68A] px-8 py-4 font-semibold text-[#182527]">
+            <p className="mb-4 text-xl font-serif font-bold text-primary">Enjoyed this article?</p>
+            <Link to="/blog" className="btn btn-primary">
               Explore more posts
             </Link>
           </div>

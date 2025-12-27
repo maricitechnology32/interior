@@ -42,7 +42,7 @@ const BlogPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F5F4F0]">
+    <div className="min-h-screen bg-surface-secondary">
       {/* Hero Section */}
       <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
@@ -51,17 +51,17 @@ const BlogPage = () => {
             alt="Our Blog"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-[#182527]/80"></div>
+          <div className="absolute inset-0 bg-primary/80"></div>
         </div>
 
         <div className="relative z-10 text-center px-6">
-          <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#D1B68A]">
+          <p className="mb-4 text-sm font-bold uppercase tracking-[0.3em] text-secondary">
             Insights & Inspiration
           </p>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6">
             Our Blog
           </h1>
-          <p className="max-w-2xl mx-auto text-lg text-gray-300">
+          <p className="max-w-2xl mx-auto text-lg text-gray-200 font-light">
             Design trends, stories, and creative insights
           </p>
         </div>
@@ -69,21 +69,21 @@ const BlogPage = () => {
 
       {/* Blog Grid */}
       <section className="py-24 px-6">
-        <div className="max-w-7xl mx-auto">
+        <div className="container-custom">
           {loading && (
             <div className="flex flex-col items-center justify-center py-20">
-              <Loader2 className="h-10 w-10 animate-spin text-[#D1B68A]" />
-              <p className="mt-4 text-gray-600">Loading articles...</p>
+              <Loader2 className="h-10 w-10 animate-spin text-secondary" />
+              <p className="mt-4 text-text-muted font-medium">Loading articles...</p>
             </div>
           )}
 
           {error && (
             <div className="max-w-md mx-auto text-center py-20">
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Something went wrong</h3>
-              <p className="text-gray-600 mb-6">{error}</p>
+              <h3 className="text-xl font-serif font-bold text-primary mb-2">Something went wrong</h3>
+              <p className="text-text-secondary mb-6">{error}</p>
               <button
                 onClick={() => window.location.reload()}
-                className="px-6 py-2 bg-[#D1B68A] text-[#182527] font-medium"
+                className="btn btn-primary"
               >
                 Try Again
               </button>
@@ -92,15 +92,16 @@ const BlogPage = () => {
 
           {!loading && !error && blogs.length === 0 && (
             <div className="text-center py-20">
-              <h3 className="text-3xl font-bold text-[#182527] mb-4">Coming Soon</h3>
-              <p className="text-gray-600">Check back soon for new articles and industry insights.</p>
+              <h3 className="text-3xl font-serif font-bold text-primary mb-4">Coming Soon</h3>
+              <p className="text-text-secondary mb-8">Check back soon for new articles and industry insights.</p>
+              <Link to="/" className="btn btn-primary">Return Home</Link>
             </div>
           )}
 
           {!loading && !error && blogs.length > 0 && (
             <>
               <div className="text-center mb-12">
-                <p className="text-gray-600">{blogs.length} {blogs.length === 1 ? 'Article' : 'Articles'}</p>
+                <p className="text-text-secondary font-medium tracking-wide">{blogs.length} {blogs.length === 1 ? 'Article' : 'Articles'}</p>
               </div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -108,34 +109,37 @@ const BlogPage = () => {
                   <Link
                     key={blog._id}
                     to={`/blog/${blog._id}`}
-                    className="group block bg-white overflow-hidden transition-shadow duration-300 hover:shadow-xl"
+                    className="group block bg-white rounded-card overflow-hidden shadow-sm hover:shadow-card-hover transition-all duration-300 border border-gray-100"
                   >
-                    <div className="aspect-[16/10] overflow-hidden">
+                    <div className="aspect-[16/10] overflow-hidden relative">
                       {blog.image && blog.image.url ? (
-                        <img
-                          src={blog.image.url}
-                          alt={blog.title}
-                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
+                        <>
+                          <img
+                            src={blog.image.url}
+                            alt={blog.title}
+                            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+                          <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </>
                       ) : (
-                        <div className="h-full w-full bg-[#182527] flex items-center justify-center">
-                          <span className="text-[#D1B68A] text-4xl font-bold">TSS</span>
+                        <div className="h-full w-full bg-primary flex items-center justify-center group-hover:bg-primary/90 transition-colors">
+                          <span className="text-secondary text-4xl font-serif font-bold">TSS</span>
                         </div>
                       )}
                     </div>
-                    <div className="p-6">
-                      <p className="text-sm text-gray-500 mb-2">
+                    <div className="p-8">
+                      <p className="text-xs font-bold text-text-muted uppercase tracking-wider mb-2">
                         {new Date(blog.createdAt).toLocaleDateString('en-US', {
                           month: 'long',
                           day: 'numeric',
                           year: 'numeric'
                         })}
                       </p>
-                      <h3 className="text-xl font-bold text-[#182527] mb-3 line-clamp-2">{blog.title}</h3>
-                      <p className="text-gray-600 mb-4 line-clamp-3">{getExcerpt(blog)}</p>
-                      <span className="inline-flex items-center gap-2 text-[#D1B68A] font-medium">
+                      <h3 className="text-xl font-serif font-bold text-primary mb-3 line-clamp-2 group-hover:text-secondary transition-colors">{blog.title}</h3>
+                      <p className="text-text-secondary mb-6 line-clamp-3 text-sm leading-relaxed">{getExcerpt(blog)}</p>
+                      <span className="inline-flex items-center gap-2 text-secondary font-bold text-sm uppercase tracking-wider group/link">
                         Read More
-                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
                       </span>
                     </div>
                   </Link>

@@ -58,7 +58,7 @@ const ServicesPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F5F4F0]">
+    <div className="min-h-screen bg-surface-secondary">
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
@@ -67,17 +67,17 @@ const ServicesPage = () => {
             alt="Interior design services"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-[#182527]/80"></div>
+          <div className="absolute inset-0 bg-primary/80"></div>
         </div>
 
         <div className="relative z-10 text-center px-6">
-          <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#D1B68A]">
+          <p className="mb-4 text-sm font-bold uppercase tracking-[0.3em] text-secondary">
             What We Do
           </p>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6">
             Our Services
           </h1>
-          <p className="max-w-2xl mx-auto text-lg text-gray-300">
+          <p className="max-w-2xl mx-auto text-lg text-gray-200 font-light">
             Comprehensive interior design solutions tailored to your unique needs
           </p>
         </div>
@@ -85,13 +85,13 @@ const ServicesPage = () => {
 
       {/* Services Grid */}
       <section className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
+        <div className="container-custom">
           {loading ? (
             <div className="grid md:grid-cols-3 gap-8">
               {[1, 2, 3].map((i) => (
                 <div key={i} className="animate-pulse">
-                  <div className="aspect-[4/3] bg-gray-200"></div>
-                  <div className="p-6 bg-white">
+                  <div className="aspect-[4/3] bg-gray-200 rounded-card mb-4"></div>
+                  <div className="p-6 bg-white rounded-card">
                     <div className="h-6 bg-gray-200 rounded w-3/4 mb-3"></div>
                     <div className="h-4 bg-gray-200 rounded w-full mb-2"></div>
                     <div className="h-4 bg-gray-200 rounded w-2/3"></div>
@@ -105,21 +105,22 @@ const ServicesPage = () => {
                 <Link
                   key={service._id}
                   to={service.link || '/projects'}
-                  className="group block bg-white overflow-hidden transition-shadow duration-300 hover:shadow-xl"
+                  className="group block bg-white rounded-card overflow-hidden shadow-sm hover:shadow-card-hover transition-all duration-300 border border-gray-100"
                 >
-                  <div className="aspect-[4/3] overflow-hidden">
+                  <div className="aspect-[4/3] overflow-hidden relative">
                     <img
                       src={service.image?.url}
                       alt={service.title}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
+                    <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-[#182527] mb-3">{service.title}</h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed">{service.description}</p>
-                    <span className="inline-flex items-center gap-2 text-[#D1B68A] font-semibold">
+                  <div className="p-8">
+                    <h3 className="text-2xl font-serif font-bold text-primary mb-3 group-hover:text-secondary transition-colors">{service.title}</h3>
+                    <p className="text-text-secondary mb-6 leading-relaxed font-light">{service.description}</p>
+                    <span className="inline-flex items-center gap-2 text-secondary font-bold uppercase tracking-wider text-sm group/link">
                       View Projects
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
                     </span>
                   </div>
                 </Link>
@@ -130,11 +131,11 @@ const ServicesPage = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-24 px-6 bg-[#182527]">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-24 px-6 bg-primary text-white">
+        <div className="container-custom">
           <div className="text-center mb-16">
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#D1B68A] mb-4">How We Work</p>
-            <h2 className="text-4xl font-bold text-white">Our Design Process</h2>
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-secondary mb-4">How We Work</p>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white">Our Design Process</h2>
           </div>
           <div className="grid md:grid-cols-4 gap-8">
             {[
@@ -143,10 +144,10 @@ const ServicesPage = () => {
               { step: '03', title: 'Design', desc: 'Detailed plans and 3D visualizations' },
               { step: '04', title: 'Execution', desc: 'Professional implementation' },
             ].map((item, i) => (
-              <div key={i} className="text-center">
-                <div className="text-5xl font-bold text-[#D1B68A] mb-4">{item.step}</div>
-                <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-gray-400">{item.desc}</p>
+              <div key={i} className="text-center group p-6 rounded-card hover:bg-white/5 transition-colors duration-300">
+                <div className="text-6xl font-serif font-bold text-secondary/20 mb-4 group-hover:text-secondary transition-colors duration-300">{item.step}</div>
+                <h3 className="text-xl font-bold text-white mb-3 font-serif">{item.title}</h3>
+                <p className="text-gray-400 font-light leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -158,8 +159,8 @@ const ServicesPage = () => {
         <section id="inquiry-form" className="py-24 px-6 bg-white">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-[#182527] mb-4">Get In Touch</h2>
-              <p className="text-gray-600">Have a project in mind? Fill out the form below.</p>
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">Get In Touch</h2>
+              <p className="text-text-secondary font-light text-lg">Have a project in mind? Fill out the form below.</p>
             </div>
             <InquiryForm />
           </div>

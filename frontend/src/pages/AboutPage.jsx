@@ -62,7 +62,7 @@ const AboutPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#F5F4F0]">
+    <div className="min-h-screen bg-surface-secondary">
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
@@ -71,55 +71,56 @@ const AboutPage = () => {
             alt="About The Space Stylers"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-[#182527]/80"></div>
+          <div className="absolute inset-0 bg-primary/80"></div>
         </div>
 
         <div className="relative z-10 text-center px-6">
-          <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#D1B68A]">
+          <p className="mb-4 text-sm font-bold uppercase tracking-[0.3em] text-secondary">
             {content.heroTagline}
           </p>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6">
             {content.heroTitle}
           </h1>
-          <p className="max-w-2xl mx-auto text-lg text-gray-300">
+          <p className="max-w-2xl mx-auto text-lg text-gray-200 font-light">
             {content.heroSubtitle}
           </p>
         </div>
       </section>
 
       {/* Stats Row */}
-      <section className="py-16 px-6 bg-[#182527]">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <section className="py-20 px-6 bg-primary text-white border-b border-white/10">
+        <div className="container-custom grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/10">
           {content.stats?.map((stat, index) => (
-            <div key={index}>
-              <p className="text-4xl md:text-5xl font-bold text-[#D1B68A]">{stat.value}</p>
-              <p className="mt-2 text-sm text-gray-400">{stat.label}</p>
+            <div key={index} className="px-4">
+              <p className="text-4xl md:text-5xl font-serif font-bold text-secondary mb-2">{stat.value}</p>
+              <p className="text-sm font-medium tracking-wide text-gray-400 uppercase">{stat.label}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Who We Are */}
-      <section className="py-24 px-6">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <section className="py-24 px-6 bg-surface-secondary">
+        <div className="container-custom grid md:grid-cols-2 gap-16 items-center">
           <div>
-            <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-[#D1B68A]">
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-secondary">
               {content.aboutTagline}
             </p>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#182527] mb-6">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-8 leading-tight">
               {content.aboutTitle}
             </h2>
-            <div className="space-y-6 text-gray-600 leading-relaxed">
+            <div className="space-y-6 text-text-secondary leading-relaxed font-light text-lg">
               {content.aboutParagraphs?.map((para, index) => (
                 <p key={index}>{para}</p>
               ))}
             </div>
           </div>
-          <div>
+          <div className="relative">
+            <div className="absolute -inset-4 bg-secondary/10 rounded-card -z-10 transform rotate-3"></div>
             <img
               src={content.aboutImage?.url}
               alt="Modern interior"
-              className="w-full h-[500px] object-cover"
+              className="w-full h-[500px] object-cover rounded-card shadow-card"
             />
           </div>
         </div>
@@ -127,39 +128,44 @@ const AboutPage = () => {
 
       {/* Mission & Vision */}
       <section className="py-24 px-6 bg-white">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
-          <div className="p-10 border-l-4 border-[#D1B68A]">
-            <h3 className="text-2xl font-bold text-[#182527] mb-4">Our Mission</h3>
-            <p className="text-gray-600 leading-relaxed">{content.mission}</p>
+        <div className="container-custom grid md:grid-cols-2 gap-12">
+          <div className="p-10 border-l-4 border-secondary bg-surface-secondary/50 rounded-r-card">
+            <h3 className="text-3xl font-serif font-bold text-primary mb-4">Our Mission</h3>
+            <p className="text-text-secondary leading-relaxed font-light text-lg">{content.mission}</p>
           </div>
-          <div className="p-10 border-l-4 border-[#182527]">
-            <h3 className="text-2xl font-bold text-[#182527] mb-4">Our Vision</h3>
-            <p className="text-gray-600 leading-relaxed">{content.vision}</p>
+          <div className="p-10 border-l-4 border-primary bg-surface-secondary/50 rounded-r-card">
+            <h3 className="text-3xl font-serif font-bold text-primary mb-4">Our Vision</h3>
+            <p className="text-text-secondary leading-relaxed font-light text-lg">{content.vision}</p>
           </div>
         </div>
       </section>
 
       {/* Our Team */}
-      <section className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-24 px-6 bg-surface-secondary">
+        <div className="container-custom">
           <div className="text-center mb-16">
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#D1B68A] mb-4">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-secondary mb-4">
               Meet Our Team
             </p>
-            <h2 className="text-4xl font-bold text-[#182527]">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary">
               The Creative Minds
             </h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {content.team?.map((member, index) => (
-              <div key={index} className="text-center">
-                <img
-                  src={member.image?.url}
-                  alt={member.name}
-                  className="w-full aspect-square object-cover mb-4"
-                />
-                <h4 className="font-bold text-[#182527]">{member.name}</h4>
-                <p className="text-sm text-gray-600">{member.role}</p>
+              <div key={index} className="text-center group">
+                <div className="relative overflow-hidden rounded-card mb-6 shadow-sm group-hover:shadow-card-hover transition-all duration-300">
+                  <img
+                    src={member.image?.url}
+                    alt={member.name}
+                    className="w-full aspect-[3/4] object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+                    <p className="text-white font-serif italic">"Design is intelligence made visible."</p>
+                  </div>
+                </div>
+                <h4 className="text-xl font-serif font-bold text-primary group-hover:text-secondary transition-colors">{member.name}</h4>
+                <p className="text-sm font-medium text-text-muted uppercase tracking-wider mt-1">{member.role}</p>
               </div>
             ))}
           </div>
@@ -167,17 +173,17 @@ const AboutPage = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-6 bg-[#182527]">
+      <section className="py-24 px-6 bg-primary text-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
             Ready to Work Together?
           </h2>
-          <p className="text-lg text-gray-300 mb-8">
+          <p className="text-lg text-gray-300 mb-10 font-light max-w-2xl mx-auto">
             Let's discuss how we can transform your space into something extraordinary.
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 bg-[#D1B68A] px-8 py-4 font-semibold text-[#182527] hover:bg-[#c4a87d] transition-colors"
+            className="btn btn-secondary text-primary hover:bg-white hover:text-primary border-none shadow-lg shadow-black/20"
           >
             Get In Touch
             <ArrowRight className="h-5 w-5" />
@@ -190,8 +196,8 @@ const AboutPage = () => {
         <section id="inquiry-form" className="py-24 px-6 bg-white">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-[#182527] mb-4">Get In Touch</h2>
-              <p className="text-gray-600">Ready to transform your space? Let's start your design journey.</p>
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">Get In Touch</h2>
+              <p className="text-text-secondary font-light text-lg">Ready to transform your space? Let's start your design journey.</p>
             </div>
             <InquiryForm />
           </div>

@@ -29,36 +29,36 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F4F0] flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-surface-secondary flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-gray-600 hover:text-[#182527] transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-text-secondary hover:text-primary transition-colors mb-8 group"
         >
-          <ArrowLeft className="h-4 w-4" />
+          <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
           Back to Home
         </Link>
 
-        <div className="bg-white p-8 shadow-lg">
-          <h1 className="mb-6 text-center text-3xl font-bold text-[#182527]">
+        <div className="bg-white p-8 shadow-card rounded-card border border-gray-100">
+          <h1 className="mb-6 text-center text-3xl font-serif font-bold text-primary">
             Sign In
           </h1>
 
           {error && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 text-center">
+            <div className="mb-6 p-4 bg-red-50 border border-red-100 rounded text-status-error text-center text-sm font-medium">
               {error}
             </div>
           )}
 
           <form onSubmit={submitHandler}>
             <div className="mb-4">
-              <label htmlFor="email" className="mb-2 block font-medium text-gray-700">
+              <label htmlFor="email" className="label">
                 Email Address
               </label>
               <input
                 type="email"
                 id="email"
-                className="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-[#D1B68A]"
+                className="input"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -66,23 +66,29 @@ const LoginPage = () => {
             </div>
 
             <div className="mb-6">
-              <label htmlFor="password" className="mb-2 block font-medium text-gray-700">
+              <label htmlFor="password" className="label">
                 Password
               </label>
               <input
                 type="password"
                 id="password"
-                className="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-[#D1B68A]"
+                className="input"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
 
+            <div className="flex justify-end mb-6">
+              <Link to="/forgot-password" className="text-sm font-medium text-text-muted hover:text-primary transition-colors">
+                Forgot Password?
+              </Link>
+            </div>
+
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#D1B68A] py-4 font-semibold text-[#182527] hover:bg-[#c4a87d] transition-colors disabled:opacity-50"
+              className="w-full btn btn-primary"
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
@@ -95,9 +101,9 @@ const LoginPage = () => {
             </button>
           </form>
 
-          <div className="mt-6 text-center text-gray-600">
+          <div className="mt-6 text-center text-text-secondary text-sm">
             New Customer?{' '}
-            <Link to="/register" className="font-medium text-[#182527] hover:underline">
+            <Link to="/register" className="font-bold text-primary hover:text-secondary hover:underline transition-colors">
               Register
             </Link>
           </div>

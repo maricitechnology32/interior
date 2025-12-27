@@ -25,6 +25,8 @@ import HomePage from './pages/HomePage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import ProjectsPage from './pages/ProjectsPage.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
+import ForgotPasswordPage from './pages/ForgotPasswordPage.jsx';
+import ResetPasswordPage from './pages/ResetPasswordPage.jsx';
 import SingleBlogPage from './pages/SingleBlogPage.jsx';
 import SingleProjectPage from './pages/SingleProjectPage.jsx';
 import EditBlogPage from './pages/admin/EditBlogPage.jsx';
@@ -62,6 +64,8 @@ const router = createBrowserRouter(
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/terms-of-service" element={<TermsPage />} />
         <Route path="/profile" element={<AdminLayout><ProfilePage /></AdminLayout>} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/reset-password/:resetToken" element={<ResetPasswordPage />} />
       </Route>
 
 
